@@ -37,6 +37,19 @@ impl AsRef<str> for GermanString {
     }
 }
 
+impl PartialEq for GermanString {
+    fn eq(&self, other: &Self) -> bool {
+        if self.len() != other.len() {
+            return false;
+        } else {
+            self.0[size_of::<u32>()..size_of::<u32>() + self.len()] == other.0[size_of::<u32>()..size_of::<u32>() + other.len()]
+
+        }
+    }
+}
+
+impl Eq for GermanString {}
+
 #[cfg(test)]
 mod test {
     use super::*;
